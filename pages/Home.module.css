@@ -1,0 +1,8 @@
+.container {
+	@apply text-center;
+}
+
+.search_bar {
+	@apply outline-none;
+	box-shadow: 0 0 0 2px hsla(200, 60%, 40%, 0.9);
+}
