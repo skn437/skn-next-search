@@ -57,9 +57,7 @@ const Home: NextPage<PropsType> = (props) => {
 			</div>
 
 			<nav>
-				<Link href="/about">
-					<a>About</a>
-				</Link>
+				<Link href="/about">About</Link>
 			</nav>
 
 			<main>
