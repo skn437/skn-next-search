@@ -5,6 +5,13 @@ import Link from "next/link";
 import axios from "axios";
 import type { ContactsType } from "@/pages/api/contacts";
 import { useState } from "react";
+import { z } from "zod";
+
+const schema = z.object({
+	id: z.string().min(10).max(16),
+	title: z.string().min(3),
+	name: z.string().min(3),
+});
 
 interface PropsType {
 	contacts: ContactsType[];
@@ -79,13 +86,13 @@ const Home: NextPage<PropsType> = (props) => {
 
 					<tbody>
 						{contacts
-							.filter((item) => {
+							?.filter((item) => {
 								const term = search.toLowerCase();
 								return term === ""
 									? item
 									: item.first_name.toLowerCase().includes(term);
 							})
-							.map((contact) => (
+							.map((contact, index) => (
 								<tr key={contact.id}>
 									<td>{contact.first_name}</td>
 									<td>{contact.last_name}</td>
@@ -96,6 +103,8 @@ const Home: NextPage<PropsType> = (props) => {
 					</tbody>
 				</table>
 			</div>
+
+			<p data-testid={`first-0`}>Hell: {contacts[0]?.first_name}</p>
 
 			<footer>
 				<p>Footer</p>
